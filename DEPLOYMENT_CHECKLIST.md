@@ -3,9 +3,25 @@
 ## ✅ Pre-Deployment Checklist
 
 - [ ] All code committed to GitHub
-- [ ] Models trained locally (backend/models/ directory exists)
+- [ ] **IMPORTANT: Models trained locally and committed to Git**
+  ```bash
+  cd backend
+  python train_models.py
+  git add models/*.pkl
+  git commit -m "Add trained ML models"
+  git push
+  ```
+- [ ] Verify backend/models/ directory contains:
+  - `crop_yield_model.pkl`
+  - `crop_recommendation_model.pkl`
+  - `label_encoders.pkl`
 - [ ] Backend build.sh is executable
 - [ ] Environment variables configured
+
+⚠️ **CRITICAL**: Models MUST be pre-trained and committed because:
+- Render free tier has only 512MB RAM (insufficient for training)
+- Training is skipped during deployment (see build.sh)
+- API loads .pkl files from backend/models/ at startup
 
 ## 📝 Deployment Steps
 

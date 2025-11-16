@@ -37,9 +37,21 @@ y_yield = crop_data_clean['Production']
 # Split the data
 X_train, X_test, y_train, y_test = train_test_split(X_yield, y_yield, test_size=0.2, random_state=42)
 
-# Train Random Forest model for yield prediction
+# Train Random Forest model for yield prediction (optimized for smaller file size)
 print("\nTraining Random Forest model for yield prediction...")
-rf_model = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)
+# Reduced parameters to minimize model size while maintaining accuracy:
+# - n_estimators: 50 instead of 100 (fewer trees = smaller model)
+# - max_depth: 15 (limit tree depth to reduce complexity)
+# - min_samples_split: 10 (prevents overfitting, reduces size)
+# - min_samples_leaf: 4 (smoother predictions, smaller trees)
+rf_model = RandomForestRegressor(
+    n_estimators=50,
+    max_depth=15,
+    min_samples_split=10,
+    min_samples_leaf=4,
+    random_state=42,
+    n_jobs=-1
+)
 rf_model.fit(X_train, y_train)
 
 # Evaluate model
@@ -48,10 +60,11 @@ test_score = rf_model.score(X_test, y_test)
 print(f"Training Score: {train_score:.4f}")
 print(f"Testing Score: {test_score:.4f}")
 
-# Save the model and encoders
+# Save the model and encoders with compression
 print("\nSaving crop yield prediction model...")
-joblib.dump(rf_model, 'models/crop_yield_model.pkl')
-joblib.dump(label_encoders, 'models/label_encoders.pkl')
+# compress=3 reduces file size significantly (level 0-9, 3 is good balance)
+joblib.dump(rf_model, 'models/crop_yield_model.pkl', compress=3)
+joblib.dump(label_encoders, 'models/label_encoders.pkl', compress=3)
 
 print("\n" + "="*50)
 print("Crop yield prediction model saved successfully!")
@@ -70,7 +83,15 @@ if os.path.exists('../ml/Crop_recommendation.csv'):
         X_rec, y_rec, test_size=0.2, random_state=42
     )
     
-    rf_rec_model = RandomForestClassifier(n_estimators=100, random_state=42, n_jobs=-1)
+    # Optimized Random Forest for smaller model size
+    rf_rec_model = RandomForestClassifier(
+        n_estimators=50,
+        max_depth=15,
+        min_samples_split=10,
+        min_samples_leaf=4,
+        random_state=42,
+        n_jobs=-1
+    )
     rf_rec_model.fit(X_train_rec, y_train_rec)
     
     train_score_rec = rf_rec_model.score(X_train_rec, y_train_rec)
@@ -78,9 +99,9 @@ if os.path.exists('../ml/Crop_recommendation.csv'):
     print(f"Training Score: {train_score_rec:.4f}")
     print(f"Testing Score: {test_score_rec:.4f}")
     
-    # Save recommendation model
+    # Save recommendation model with compression
     print("\nSaving crop recommendation model...")
-    joblib.dump(rf_rec_model, 'models/crop_recommendation_model.pkl')
+    joblib.dump(rf_rec_model, 'models/crop_recommendation_model.pkl', compress=3)
     
     print("\n" + "="*50)
     print("Crop recommendation model saved successfully!")

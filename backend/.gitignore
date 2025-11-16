@@ -11,6 +11,6 @@ dist/
 build/
 .env
 .venv
-models/*.pkl
+# models/*.pkl - COMMENTED OUT: We need to commit trained models for Render deployment
 *.log
 .DS_Store
