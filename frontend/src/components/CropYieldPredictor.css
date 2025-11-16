@@ -87,8 +87,6 @@
 
 .form-group select option {
   padding: 0.75rem 1rem;
-  background-color: #ffffff;
-  color: #2c3e50;
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -96,18 +94,6 @@
 .form-group select option:first-child {
   color: #95a5a6;
   font-style: italic;
-}
-
-.form-group select option:hover,
-.form-group select option:focus {
-  background-color: #e8f5e9;
-  color: #1b5e20;
-}
-
-.form-group select option:checked {
-  background-color: #27ae60;
-  color: white;
-  font-weight: 600;
 }
 
 /* Mobile optimizations */
