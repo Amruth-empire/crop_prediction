@@ -1,0 +1,128 @@
+.predictor-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.predictor-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.predictor-card h2 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  color: #7f8c8d;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #27ae60;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #27ae60, #229954);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(39, 174, 96, 0.3);
+}
+
+.submit-btn:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #fee;
+  border-left: 4px solid #e74c3c;
+  border-radius: 8px;
+  color: #c0392b;
+}
+
+.result-card {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  border-radius: 12px;
+  border: 2px solid #27ae60;
+}
+
+.result-card h3 {
+  color: #1b5e20;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.result-content {
+  text-align: center;
+}
+
+.result-value {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.result-value .value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1b5e20;
+}
+
+.result-value .unit {
+  font-size: 1.2rem;
+  color: #388e3c;
+}
+
+.result-message {
+  color: #2e7d32;
+  font-size: 1rem;
+  margin: 0;
+}
