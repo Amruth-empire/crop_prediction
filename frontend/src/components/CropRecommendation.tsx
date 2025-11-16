@@ -28,7 +28,7 @@ const CropRecommendation = () => {
     setResult(null);
 
     try {
-      const response = await fetch('http://localhost:8000/recommend-crop', {
+      const response = await fetch('http://localhost:8000/api/recommend-crop', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

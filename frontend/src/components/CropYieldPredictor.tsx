@@ -26,7 +26,7 @@ const CropYieldPredictor = () => {
     setResult(null);
 
     try {
-      const response = await fetch('http://localhost:8000/predict-yield', {
+      const response = await fetch('http://localhost:8000/api/predict-yield', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
