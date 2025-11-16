@@ -20,11 +20,14 @@ app.add_middleware(
         "http://localhost:5174", 
         "http://localhost:3000",
         "http://localhost",
-        "http://localhost:80"
+        "http://localhost:80",
+        "https://*.vercel.app",  # Vercel deployments
+        "https://vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    allow_origin_regex=r"https://.*\.vercel\.app$"  # Allow all Vercel preview URLs
 )
 
 # Load models and data
