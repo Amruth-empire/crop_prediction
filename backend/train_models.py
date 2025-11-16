@@ -14,7 +14,7 @@ os.makedirs('models', exist_ok=True)
 
 print("Loading crop production data...")
 # Load crop production data
-crop_data = pd.read_csv('../crop_production.csv')
+crop_data = pd.read_csv('../ml/crop_production.csv')
 
 # Data preprocessing for yield prediction
 print("\nPreprocessing data for yield prediction...")
@@ -58,9 +58,9 @@ print("Crop yield prediction model saved successfully!")
 print("="*50)
 
 # Train crop recommendation model if data exists
-if os.path.exists('../Crop_recommendation.csv'):
+if os.path.exists('../ml/Crop_recommendation.csv'):
     print("\nLoading crop recommendation data...")
-    crop_rec_data = pd.read_csv('../Crop_recommendation.csv')
+    crop_rec_data = pd.read_csv('../ml/Crop_recommendation.csv')
     
     print("Training crop recommendation model...")
     X_rec = crop_rec_data[['N', 'P', 'K', 'temperature', 'humidity', 'ph', 'rainfall']]

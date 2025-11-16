@@ -23,7 +23,7 @@ app.add_middleware(
 
 # Load models and data
 MODEL_DIR = "models"
-DATA_DIR = "../"
+DATA_DIR = "../ml"
 
 # Request models
 class CropYieldRequest(BaseModel):
