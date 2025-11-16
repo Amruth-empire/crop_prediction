@@ -16,12 +16,15 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        # Local development
         "http://localhost:5173", 
         "http://localhost:5174", 
         "http://localhost:3000",
         "http://localhost",
         "http://localhost:80",
-        "https://*.vercel.app",  # Vercel deployments
+        # Production
+        "https://smart-krishi-ai.vercel.app",  # Production Vercel URL
+        "https://*.vercel.app",  # Vercel preview deployments
         "https://vercel.app"
     ],
     allow_credentials=True,
